@@ -1,1 +1,36 @@
-<p>layout works!</p>
+<main class="is-flex is-flex-direction-column" style="min-height: 100vh">
+  <div class="container">
+    <section class="section is-flex-grow-1">
+      <router-outlet/>
+    </section>
+  </div>
+
+  <footer class="footer has-background-link has-text-white pb-6">
+    <div class="container">
+      <div class="is-flex is-justify-content-space-between is-align-items-center">
+        <div>
+          <h4 class="title is-4 has-text-white is-bold m-0">Complaint Portal</h4>
+          @if (loggedUserData != undefined) {
+            <h5 class="subtitle has-text-light is-6 mt-2">
+              <span>Welcome</span>
+              <span class="has-text-primary-80 px-2 py-0">{{ loggedUserData?.userName }}</span>
+            </h5>
+          }
+        </div>
+
+        <div class="is-flex is-align-items-center is-gap-3">
+          <a class="has-text-white" routerLink="/dashboard">Dashboard</a>
+          <a class="has-text-white" routerLink="complaint/list">Complaints</a>
+          @if (loggedUserData?.role === 'admin') {
+            <a class="has-text-white" routerLink="/department">Departments</a>
+          }
+          <a routerLink="/complaint/create" class="button is-warning">New Complaint</a>
+          @if (loggedUserData != undefined) {
+            <button class="button is-white is-outlined" (click)="onLogOut()">Log Out</button>
+          }
+        </div>
+      </div>
+    </div>
+  </footer>
+</main>
+
