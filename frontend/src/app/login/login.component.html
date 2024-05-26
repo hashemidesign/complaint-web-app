@@ -1,1 +1,79 @@
-<p>login works!</p>
+<main class="is-flex is-justify-content-center is-align-items-center" style="min-height: 100vh">
+  @if (isLoginVisible) {
+    <div class="card" style="min-width: 400px">
+      <div class="card-content">
+        <h2 class="title is-3 has-text-centered">Login</h2>
+        <hr class="is-horizontal">
+        <form (ngSubmit)="onLogin()">
+          <div class="field">
+            <label for="username" class="label">Username:</label>
+            <div class="control">
+              <input
+                name="userName" [(ngModel)]="loginObj.userName"
+                type="text" id="username" class="input">
+            </div>
+          </div>
+          <div class="field">
+            <label for="password" class="label">Password:</label>
+            <div class="control">
+              <input
+                name="password" [(ngModel)]="loginObj.password"
+                type="password" id="password" class="input">
+            </div>
+          </div>
+          <div class="field">
+            <input type="submit" value="Login" class="button is-link is-fullwidth">
+          </div>
+          <p class="is-size-6">Don't have an account? <a (click)="SwitchLogin()" class="has-text-primary">Register</a>
+          </p>
+        </form>
+      </div>
+    </div>
+  } @else {
+    <div class="card" style="min-width: 400px">
+      <div class="card-content">
+        <h2 class="title is-3 has-text-centered">Register</h2>
+        <hr class="is-horizontal">
+        <form (ngSubmit)="onRegister()">
+          <div class="field">
+            <label for="email" class="label">Email Address:</label>
+            <div class="control">
+              <input
+                name="emailId" [(ngModel)]="registerObj.emailId"
+                type="email" id="email" class="input">
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Full Name:</label>
+            <div class="control">
+              <input
+                name="fullName" [(ngModel)]="registerObj.fullName"
+                type="text" id="fullName" class="input">
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Username:</label>
+            <div class="control">
+              <input
+                name="userName" [(ngModel)]="registerObj.userName"
+                type="text" class="input">
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Password:</label>
+            <div class="control">
+              <input
+                name="password" [(ngModel)]="registerObj.password"
+                type="password" class="input">
+            </div>
+          </div>
+          <div class="field">
+            <input type="submit" value="Register" class="button is-link is-fullwidth">
+          </div>
+          <p class="is-size-6">Already have an account? <a (click)="SwitchLogin()" class="has-text-primary">Login</a>
+          </p>
+        </form>
+      </div>
+    </div>
+  }
+</main>
